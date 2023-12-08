@@ -9,6 +9,7 @@ export default function OrderForm() {
     const [custom_id, setCustomID] = useState(0)
     const [location_id, setLocationID] = useState(0)
     const [location_name, setLocationName] = useState("Loading Data")
+    const apiUrl = process.env.API_URL;
     
     const getRandomNumber = (min, max) => {
         return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -19,7 +20,7 @@ export default function OrderForm() {
         const body = JSON.stringify({
             order_id, custom_id, location_id
         })
-        fetch (`http://virtualhoteltourservices.c4aaf6hnfxhhbtb5.southeastasia.azurecontainer.io:8000/deliverOrder`, {
+        fetch (`${apiUrl}/deliverOrder`, {
             method: "POST",
             headers: {
             "Authorization": token,
@@ -42,7 +43,7 @@ export default function OrderForm() {
     useEffect(() => {
         const token = window.localStorage.getItem("token")
 
-        fetch (`http://virtualhoteltourservices.c4aaf6hnfxhhbtb5.southeastasia.azurecontainer.io:8000/menu`, {
+        fetch (`${apiUrl}/menu`, {
             method: "GET",
             headers: {
               "Authorization": token,
@@ -65,7 +66,7 @@ export default function OrderForm() {
             return
         })
 
-        fetch (`http://virtualhoteltourservices.c4aaf6hnfxhhbtb5.southeastasia.azurecontainer.io:8000/ingredients`, {
+        fetch (`${apiUrl}/ingredients`, {
             method: "GET",
             headers: {
               "Authorization": token,
@@ -84,7 +85,7 @@ export default function OrderForm() {
             return
         })
 
-        fetch(`http://virtualhoteltourservices.c4aaf6hnfxhhbtb5.southeastasia.azurecontainer.io:8000/location/` + getRandomNumber(1,3), {
+        fetch(`${apiUrl}/location/` + getRandomNumber(1,3), {
             method: "GET",
             headers: {
               "Authorization": token,

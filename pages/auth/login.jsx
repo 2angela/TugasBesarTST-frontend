@@ -8,6 +8,7 @@ const Login = () => {
   const [password, setPassword] = useState("")
   const requestBody = new URLSearchParams();
   const router = useRouter()
+  const apiUrl = process.env.API_URL;
 
   const makeBody = () => {
     requestBody.append('username', username);
@@ -24,7 +25,7 @@ const Login = () => {
         <form className="w-3/4 flex flex-col space-y-8" onSubmit={(e) => {
             e.preventDefault()
 
-            fetch("http://virtualhoteltourservices.c4aaf6hnfxhhbtb5.southeastasia.azurecontainer.io:8000/token", {
+            fetch(`${apiUrl}/token`, {
                 method: "POST",
                 body: makeBody(),
                 headers: {

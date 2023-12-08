@@ -5,6 +5,7 @@ export default function LiveChat() {
     const [rowsLog, setrowsLog] = useState([])
     const [log, setLog] = useState(null)
     const [userID, setUserID] = useState(0)
+    const apiUrl = process.env.API_URL;
     
     const findUserLog = (user_id) => {
         const logindex = rowsLog.find(log => log.user_id === user_id)
@@ -16,7 +17,7 @@ export default function LiveChat() {
 
     useEffect(() => {
         const token = window.localStorage.getItem("token")
-        fetch (`http://virtualhoteltourservices.c4aaf6hnfxhhbtb5.southeastasia.azurecontainer.io:8000/users/me`, {
+        fetch (`${apiUrl}/users/me`, {
             method: "GET",
             headers: {
               "Authorization": token,
@@ -31,7 +32,7 @@ export default function LiveChat() {
             return
         })
 
-        const getLog = fetch(`http://virtualhoteltourservices.c4aaf6hnfxhhbtb5.southeastasia.azurecontainer.io:8000/interactionLog`, {
+        const getLog = fetch(`${apiUrl}/interactionLog`, {
             method: "GET",
             headers: {
               "Authorization": token,

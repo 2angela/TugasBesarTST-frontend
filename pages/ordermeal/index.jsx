@@ -8,10 +8,11 @@ export default function OrderMeal() {
     const [menu, setMenu] = useState([])
     const [ingredients, setIngredients] = useState([])
     const [location, setLocation] = useState([])
+    const apiUrl = process.env.API_URL;
 
     useEffect(() => {
         const token = window.localStorage.getItem("token")
-        const getMenu = fetch (`http://virtualhoteltourservices.c4aaf6hnfxhhbtb5.southeastasia.azurecontainer.io:8000/menu`, {
+        const getMenu = fetch (`${apiUrl}/menu`, {
             method: "GET",
             headers: {
               "Authorization": token,
@@ -28,7 +29,7 @@ export default function OrderMeal() {
             return
         })
 
-        const getIngredients = fetch (`http://virtualhoteltourservices.c4aaf6hnfxhhbtb5.southeastasia.azurecontainer.io:8000/ingredients`, {
+        const getIngredients = fetch (`${apiUrl}/ingredients`, {
             method: "GET",
             headers: {
               "Authorization": token,
@@ -45,7 +46,7 @@ export default function OrderMeal() {
             return
         })
 
-        const getLocation = fetch(`http://virtualhoteltourservices.c4aaf6hnfxhhbtb5.southeastasia.azurecontainer.io:8000/location`).then(async (response) => {
+        const getLocation = fetch(`${apiUrl}/location`).then(async (response) => {
             if (response.status !== 200) return null;
             return response.json();
             }).catch(error=>{

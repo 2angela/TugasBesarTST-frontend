@@ -9,6 +9,7 @@ export default function Home() {
   const [rowsMedia, setRowsMedia] = useState([])
   const [rowsLocation, setRowsLocation] = useState([])
   const [authstatus, setauth] = useState(false)
+  const apiUrl = process.env.API_URL;
 
   useEffect(() => {
     const token = window.localStorage.getItem("token")
@@ -16,7 +17,7 @@ export default function Home() {
       setauth(true)
     }
 
-    const getMedia = fetch(`http://virtualhoteltourservices.c4aaf6hnfxhhbtb5.southeastasia.azurecontainer.io:8000/media`).then(async (response) => {
+    const getMedia = fetch(`${apiUrl}/media`).then(async (response) => {
       if (response.status !== 200) return null;
       return response.json();
     }).catch(error=>{
@@ -24,7 +25,7 @@ export default function Home() {
       return
     })
 
-    const getLocation = fetch(`http://virtualhoteltourservices.c4aaf6hnfxhhbtb5.southeastasia.azurecontainer.io:8000/location`).then(async (response) => {
+    const getLocation = fetch(`${apiUrl}/location`).then(async (response) => {
       if (response.status !== 200) return null;
       return response.json();
       }).catch(error=>{
