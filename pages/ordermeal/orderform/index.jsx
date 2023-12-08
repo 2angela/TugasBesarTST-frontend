@@ -9,17 +9,17 @@ export default function OrderForm() {
     const [custom_id, setCustomID] = useState(0)
     const [location_id, setLocationID] = useState(0)
     const [location_name, setLocationName] = useState("Loading Data")
-    const [token, setToken] = useState(null)
     
     const getRandomNumber = (min, max) => {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
     const handleSubmit = async () => {
+        const token = window.localStorage.getItem("token")
         const body = JSON.stringify({
             order_id, custom_id, location_id
         })
-        fetch (`http://localhost:8000/deliverOrder`, {
+        fetch (`http://virtualhoteltourservices.c4aaf6hnfxhhbtb5.southeastasia.azurecontainer.io:8000/deliverOrder`, {
             method: "POST",
             headers: {
             "Authorization": token,
@@ -40,9 +40,9 @@ export default function OrderForm() {
     }
 
     useEffect(() => {
-        setToken(window.localStorage.getItem("token"))
+        const token = window.localStorage.getItem("token")
 
-        fetch (`http://localhost:8000/menu`, {
+        fetch (`http://virtualhoteltourservices.c4aaf6hnfxhhbtb5.southeastasia.azurecontainer.io:8000/menu`, {
             method: "GET",
             headers: {
               "Authorization": token,
@@ -65,7 +65,7 @@ export default function OrderForm() {
             return
         })
 
-        fetch (`http://localhost:8000/ingredients`, {
+        fetch (`http://virtualhoteltourservices.c4aaf6hnfxhhbtb5.southeastasia.azurecontainer.io:8000/ingredients`, {
             method: "GET",
             headers: {
               "Authorization": token,
@@ -84,7 +84,7 @@ export default function OrderForm() {
             return
         })
 
-        fetch(`http://localhost:8000/location/` + getRandomNumber(1,3), {
+        fetch(`http://virtualhoteltourservices.c4aaf6hnfxhhbtb5.southeastasia.azurecontainer.io:8000/location/` + getRandomNumber(1,3), {
             method: "GET",
             headers: {
               "Authorization": token,

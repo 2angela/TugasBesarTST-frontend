@@ -16,7 +16,7 @@ export default function Home() {
       setauth(true)
     }
 
-    const getMedia = fetch(`http://localhost:8000/media`).then(async (response) => {
+    const getMedia = fetch(`http://virtualhoteltourservices.c4aaf6hnfxhhbtb5.southeastasia.azurecontainer.io:8000/media`).then(async (response) => {
       if (response.status !== 200) return null;
       return response.json();
     }).catch(error=>{
@@ -24,7 +24,7 @@ export default function Home() {
       return
     })
 
-    const getLocation = fetch(`http://localhost:8000/location`).then(async (response) => {
+    const getLocation = fetch(`http://virtualhoteltourservices.c4aaf6hnfxhhbtb5.southeastasia.azurecontainer.io:8000/location`).then(async (response) => {
       if (response.status !== 200) return null;
       return response.json();
       }).catch(error=>{

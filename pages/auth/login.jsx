@@ -24,7 +24,7 @@ const Login = () => {
         <form className="w-3/4 flex flex-col space-y-8" onSubmit={(e) => {
             e.preventDefault()
 
-            fetch("http://localhost:8000/token", {
+            fetch("http://virtualhoteltourservices.c4aaf6hnfxhhbtb5.southeastasia.azurecontainer.io:8000/token", {
                 method: "POST",
                 body: makeBody(),
                 headers: {

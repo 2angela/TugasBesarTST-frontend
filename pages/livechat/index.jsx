@@ -16,7 +16,7 @@ export default function LiveChat() {
 
     useEffect(() => {
         const token = window.localStorage.getItem("token")
-        fetch (`http://localhost:8000/users/me`, {
+        fetch (`http://virtualhoteltourservices.c4aaf6hnfxhhbtb5.southeastasia.azurecontainer.io:8000/users/me`, {
             method: "GET",
             headers: {
               "Authorization": token,
@@ -31,7 +31,7 @@ export default function LiveChat() {
             return
         })
 
-        const getLog = fetch(`http://localhost:8000/interactionLog`, {
+        const getLog = fetch(`http://virtualhoteltourservices.c4aaf6hnfxhhbtb5.southeastasia.azurecontainer.io:8000/interactionLog`, {
             method: "GET",
             headers: {
               "Authorization": token,
@@ -72,7 +72,7 @@ export default function LiveChat() {
                     </>
                 }
                 {(!log) && <>
-                    <span className="font-bold text-xl">No Interaction Log hisory found.</span>
+                    <span className="font-bold text-xl">No Interaction Log history found.</span>
                 </>}
                 
             </div>
