@@ -4,7 +4,7 @@ const nextConfig = {
   images: {
     domains: ['i.ibb.co'],
   },
-  env: { API_URL: "http://virtualhoteltourservices.c4aaf6hnfxhhbtb5.southeastasia.azurecontainer.io:8000"}
+  env: { API_URL: "http://virtualhoteltourservice.bug5gmc4dkc5g2d2.southeastasia.azurecontainer.io:8000"}
 }
 
 module.exports = nextConfig
