@@ -32,12 +32,12 @@ export default function Home() {
         return
       })
 
-      Promise.all([getMedia, getLocation]).then(([mediaData, locationData]) => {
-        setRowsMedia(mediaData || []);
-        setRowsLocation(locationData || []);
-      });
+    Promise.all([getMedia, getLocation]).then(([mediaData, locationData]) => {
+      setRowsMedia(mediaData || []);
+      setRowsLocation(locationData || []);
+    });
 
-    }, [])
+  }, [])
 
   return <>
       <main className="min-h-screen bg-[#FFFFFF]">
