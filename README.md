@@ -1,4 +1,4 @@
-# Tugas Besar TST - backend
+# Tugas Besar TST - frontend
 ## Integrasi Layanan
 
 Angela Geraldine Hasian Panjaitan <br>
